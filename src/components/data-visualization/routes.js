@@ -1,6 +1,6 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
-import PageTemplate from '../PageTemplate'
+import {PageTemplate} from '../PageTemplate'
 import DataVisualization from './DataVisualization'
 import BarChart from './BarChart/BarChart'
 

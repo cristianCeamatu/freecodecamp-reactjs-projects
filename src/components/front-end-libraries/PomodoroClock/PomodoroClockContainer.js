@@ -1,31 +1,11 @@
+import { connect } from 'react-redux'
+//import {BreakSection, SessionSection, DisplaySection, TogglersSection} from './PomodoroClock'
+import {decrementBreak, incrementBreak, decrementSession, incrementSession, startStop, reset, tick} from '../../../stores/PomodoroClock/actions'
+import accurateInterval from 'accurate-interval'
 import React from 'react'
-import './clock.css'
-import {FaClock} from 'react-icons/fa'
-import {BreakMenu, SessionMenu, Display, Togglers} from './PomodoroClockContainer'
 import {intToMMSS} from '../../../helpers/helperFunctions.js'
-import PageTemplate from '../PageTemplate'
 
-export const PomodoroClock = ({location}) => {
-    const title = location.pathname.split('/')[2].split('-').join(' ')
-    return (
-      <PageTemplate>
-        <header className="App-header">
-          <FaClock className="fa-3x m-2 App-logo no-animation" />
-          <h1 className="App-title">This page contains the <span className="capitalize">{title}</span> project</h1>
-        </header>
-        <div className="App">
-          <section id="PomodoroClock">
-            <Togglers />
-            <BreakMenu />
-            <SessionMenu />
-            <Display />
-          </section>
-        </div>
-      </PageTemplate>
-    )
-}
-
-export const BreakSection = ({breakLength, onIncrementBreak, onDecrementBreak}) => {
+const BreakSection = ({breakLength, onIncrementBreak, onDecrementBreak}) => {
   return (
     <section className="breakSection">
       <button 
@@ -46,7 +26,7 @@ export const BreakSection = ({breakLength, onIncrementBreak, onDecrementBreak}) 
     )
 }
 
-export const SessionSection = ({sessionLength, onIncrementSession, onDecrementSession}) => {
+const SessionSection = ({sessionLength, onIncrementSession, onDecrementSession}) => {
   return (
     <section className="sessionSection">
       <button 
@@ -67,7 +47,7 @@ export const SessionSection = ({sessionLength, onIncrementSession, onDecrementSe
     )
 }
 
-export const TogglersSection = ({active, onStartStop, onReset}) => {
+const TogglersSection = ({active, onStartStop, onReset}) => {
   return (
     <section className="togglersSection">
       <button 
@@ -86,7 +66,7 @@ export const TogglersSection = ({active, onStartStop, onReset}) => {
     )
 }
 
-export const DisplaySection = ({timeLeftType, timeLeft}) => {
+const DisplaySection = ({timeLeftType, timeLeft}) => {
   return (
     <section className="DisplaySection">
       <div id="display"
@@ -103,4 +83,65 @@ export const DisplaySection = ({timeLeftType, timeLeft}) => {
     </section>
   ) 
 }
+
+export const BreakMenu = connect(
+	state => ({
+			breakLength: state.breakLength
+		}),
+	dispatch => ({
+		onDecrementBreak() {
+			dispatch(decrementBreak())
+		},
+		onIncrementBreak() {
+			dispatch(incrementBreak())
+		}
+	}))(BreakSection)
+
+export const SessionMenu = connect(
+	state => ({
+			sessionLength: state.sessionLength
+		}),
+	dispatch => ({
+		onDecrementSession() {
+			dispatch(decrementSession())
+		},
+		onIncrementSession() {
+			dispatch(incrementSession())
+		}
+}))(SessionSection)
+
+export const Display = connect(
+	state => ({
+		timeLeft: state.timeLeft,
+		timeLeftType: state.timeLeftType,
+		active: state.active
+	}),
+	null
+	)(DisplaySection)
+
+// For clearing the interval
+let timer = null
+export const Togglers = connect(
+	state => ({
+		active: state.active
+	}),
+	dispatch => ({
+		onReset() {
+			timer && timer.clear()
+			const sound = document.getElementById('beep')
+			sound.pause()
+			sound.currentTime = 0
+			dispatch(reset())
+		},
+		onStartStop(status) {
+			if (status === false) {
+				timer && timer.clear()
+				timer = accurateInterval(() => dispatch(tick()), 1000)			
+			} else {
+				timer.clear()
+			}
+			dispatch(startStop())
+		}
+	})
+)(TogglersSection)
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import '../css/Main.css'
 import { FaHome } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 
@@ -14,8 +13,7 @@ const MainNav = () =>
 		<NavLink to="/data-visualization" activeClassName="active">Data Visualization</NavLink>
 	</nav>
 
-
-export default ({children}) =>
+export const PageTemplate = ({children}) =>
 	<div className="page">
 		<MainNav />
 		{children}

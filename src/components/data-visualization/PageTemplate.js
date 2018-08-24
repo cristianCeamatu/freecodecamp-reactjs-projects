@@ -10,8 +10,8 @@ const Menu = () =>
 		<NavLink to="/data-visualization/bar-chart" activeClassName="active">Bar Chart</NavLink>
 	</nav>
 
-export default ({children}) =>
-	<div className="front-end-libraries">
+export default ({children, category}) =>
+	<div className={category}>
 		<Menu />
 		{children}
 	</div>

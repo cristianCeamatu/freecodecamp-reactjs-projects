@@ -1,8 +1,8 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
-import PageTemplate from '../PageTemplate'
+import {PageTemplate} from '../PageTemplate'
 import FrontEndLibraries from './FrontEndLibraries'
-import PomodoroClock from './PomodoroClock/PomodoroClock'
+import {PomodoroClock} from './PomodoroClock/PomodoroClock'
 
 
 export default () => {

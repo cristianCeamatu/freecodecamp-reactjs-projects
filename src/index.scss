@@ -7,3 +7,51 @@ body {
 .capitalize {
 	text-transform: capitalize;
 }
+
+.App-logo {
+  animation: App-logo-spin infinite 5s linear;
+  height: 80px;
+  &.no-animation {
+    animation: none;
+  }
+}
+
+
+.App-header {
+  background-color: #222;
+  height: auto;
+  padding: 30px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.App-title {
+  font-size: 1.5em;
+  align-self: center;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.main-menu {
+  padding: 5px;
+  padding-left: 0;
+  a, a:hover, a:active, a:focus {
+    text-decoration: none;
+    outline: none;
+    color: #222;
+    padding: 10px;
+    border-radius: 2%;
+  }
+  .active, .active:hover, .active:active, .active:focus {
+    background: #222;
+    color: white;
+  }
+}
