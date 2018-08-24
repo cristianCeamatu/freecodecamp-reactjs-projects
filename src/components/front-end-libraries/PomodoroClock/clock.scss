@@ -1,0 +1,214 @@
+$theme-color: #2e3951;
+
+#PomodoroClock, button {
+	background:
+	linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+	linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+	linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+	linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+	linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+	linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+	background-color: #131313;
+	background-size: 20px 20px;
+}
+#display {
+	box-shadow: inset -12px -8px 40px #464646;
+	background-color: #6d695c;
+	background-image:
+	repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+	repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+	linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+	linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+	background-size: 70px 120px;
+}
+#PomodoroClock {
+  	box-shadow: 5px 5px rgba(0, 0, 0, 0.4),
+              10px 10px rgba(0, 0, 0, 0.3),
+              15px 15px rgba(0, 0, 0, 0.2),
+              20px 20px rgba(0, 0, 0, 0.1),
+              25px 25px rgba(0, 0, 0, 0.05);
+	font-size: 24px;
+	font-weight: 700;
+	position: relative;
+	width: 500px;
+	height: 500px;
+	margin: 50px auto;
+	border-radius: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: space-between;
+	justify-content: space-around;
+	.sessionSection, .breakSection, .togglersSection {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		text-align: center;
+		button {
+			border-radius: 10px;
+			color: white;
+			border: 0;
+			outline: none;
+			height: 40px;
+			width: 50px;
+			z-index: 99;
+			i {
+				position: absolute;
+				top: 3px;
+				right: 18px;
+				z-index: -1;
+			}
+		}
+		.labels {
+			position: relative;
+			top: -30px;
+			color: white;
+		}
+	}
+	.breakSection {
+		position: relative;
+		#break-decrement, #break-increment {
+			transform: rotate(-55deg);
+			position: relative;
+			left: 15px;
+
+		}
+		#break-increment {
+			transform: rotate(55deg);
+			left: -15px;
+			&:focus {
+				animation: incrementClicked 0.1s linear;
+			}
+		}
+		#break-decrement:focus {
+			animation: decrementClicked 0.1s linear;
+		}
+	}
+	.sessionSection {
+		position: relative;
+		top: -30px;
+		#session-increment, #session-decrement {
+			position: relative;
+			transform: rotate(75deg);
+			top: -40px;
+			right: -12px;
+		}
+		#session-decrement {
+			transform: rotate(-75deg);
+			right: 12px;
+			&:focus {
+				animation: sessionDecrement 0.1s linear;
+			}
+		}
+		#session-increment:focus {
+			animation: sessionIncrement 0.1s linear;
+		}
+	}
+}
+.togglersSection {
+	#start_stop, #reset {
+		transform: rotate(-45deg);
+		position: relative;
+		top: 40px;
+		left: 60px;
+		transition: all 0.1s linear
+	}
+	#reset {
+		transform: rotate(45deg);
+		left: -60px;
+	}
+	#start_stop.active {
+		left: 65px;
+		top: 45px;
+	}
+	#reset:focus {
+		animation: resetClicked 0.1s linear;
+	}
+	#start_stop::before, #reset::before {
+		content: '';
+		display: block;
+		background: red;
+		width: 30px;
+		height: 5px;
+		position: absolute;
+		top: -5px;
+		left: 50%;
+		margin-left: -15px;
+
+	}
+}
+#display {
+	display: block;
+	text-align: center;
+	padding:5px 40px;
+	border-radius: 10px;
+	margin: 10px auto;
+	width: 250px;
+	position: relative;
+	top: -60px;
+	&.danger {
+		border: 3px solid #ff4444;
+		color: #ff4444;
+	}
+}
+
+@keyframes incrementClicked {
+  0% {
+    left: -15px;
+  }
+  50% {
+  	left: -20px;
+  }
+  100% {
+    left: -15px;
+  }
+}
+
+@keyframes decrementClicked {
+  0% {
+    left: 15px;
+  }
+  50% {
+  	left: 20px;
+  }
+  100% {
+    left: 15px;
+  }
+}
+
+@keyframes sessionIncrement {
+  0% {
+    right: -12px;
+  }
+  50% {
+  	right: -7px;
+  }
+  100% {
+    right: -12px;
+  }
+}
+
+@keyframes sessionDecrement {
+  0% {
+    right: 12px;
+  }
+  50% {
+  	right: 7px;
+  }
+  100% {
+    right: 12px;
+  }
+}
+
+
+@keyframes resetClicked {
+  50% {
+  	left: -70px;
+  	top: 45px;
+  }
+  100% {
+  	left: -60px;
+  	top: 40px;
+  }
+}
