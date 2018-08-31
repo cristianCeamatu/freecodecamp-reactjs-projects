@@ -1,11 +1,10 @@
-import { createStore, applyMiddleware } from 'redux'
+import store from '../../../redux/store' 
 
-// Defining initial state
-const InitialState = {
+//Defining initial state
+export const initialState = {
 	breakLength: 5,
 	sessionLength: 25,
 	active: false,
-	timerInterval: null,
 	timeLeft: 1500,
 	timeLeftType: 'Session'
 }
@@ -22,49 +21,49 @@ const Types = {
 }
 
 // Defining actions
-const incrementBreak = () => {
+export const incrementBreak = () => {
 	return {
 		type: Types.BREAKINCREMENT
 	}
 }
 
-const decrementBreak = () => {
+export const decrementBreak = () => {
 	return {
 		type: Types.BREAKDECREMENT
 	}
 }
 
-const incrementSession = () => {
+export const incrementSession = () => {
 	return {
 		type: Types.SESSIONINCREMENT
 	}
 }
-const decrementSession = () => {
+export const decrementSession = () => {
 	return {
 		type: Types.SESSIONDECREMENT
 	}
 }
 
-const reset = () => {
+export const reset = () => {
 	return {
 		type: Types.RESET
 	}
 }
 
-const startStop = () => {
+export const startStop = () => {
 	return {
 		type: Types.STARTSTOP
 	}
 }
 
-const tick = () => {
+export const tick = () => {
 	return {
 		type: Types.TICK
 	}
 }
 
 // Defining reducers
-const reducer = (state = {}, action) => {
+export const reducer = (state = {}, action) => {
 	switch(action.type) {
 		case Types.BREAKINCREMENT:
 			return (state.breakLength !== 60 && !state.active) ? 
@@ -158,8 +157,8 @@ const reducer = (state = {}, action) => {
 }
 
 
-// Defining store
-const focusRemover = store => next => action => {
+// Middlewares
+export const focusRemover = store => next => action => {
 	// Give the document focus
 	window.focus();
 
@@ -170,17 +169,12 @@ const focusRemover = store => next => action => {
 	next(action)
 }
 
-const beepPlayer = state => next => action => {
-	if (store.getState().timeLeft === 0) {
+export const beepPlayer = state => next => action => {
+	if (store.getState().pomodoroClock.timeLeft === 0) {
 		const sound = document.getElementById('beep')
 		sound.play()
 	}
 	next(action)
 }
 
-const storeFactory = (state = InitialState) => 
-	applyMiddleware(focusRemover, beepPlayer)(createStore)(reducer, state)
-
-const store = storeFactory()
-
-export default store
+export const middleware = [focusRemover, beepPlayer]

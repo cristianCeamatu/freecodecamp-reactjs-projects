@@ -13,7 +13,7 @@ const MainNav = () =>
 		<NavLink to="/data-visualization" activeClassName="active">Data Visualization</NavLink>
 	</nav>
 
-export const PageTemplate = ({children}) =>
+export default ({children}) =>
 	<div className="page">
 		<MainNav />
 		{children}

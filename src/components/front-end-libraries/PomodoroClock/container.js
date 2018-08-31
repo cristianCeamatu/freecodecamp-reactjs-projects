@@ -1,11 +1,11 @@
-import { connect } from 'react-redux'
-import {BreakSection, SessionSection, DisplaySection, TogglersSection} from '../../front-end-libraries/components'
-import {decrementBreak, incrementBreak, decrementSession, incrementSession, startStop, reset, tick} from './actions'
+import {connect} from 'react-redux'
+import {BreakSection, SessionSection, DisplaySection, TogglersSection} from './components'
+import {decrementBreak, incrementBreak, decrementSession, incrementSession, startStop, reset, tick} from './redux'
 import accurateInterval from 'accurate-interval'
 
 export const BreakMenu = connect(
 	state => ({
-			breakLength: state.breakLength
+			breakLength: state.pomodoroClock.breakLength
 		}),
 	dispatch => ({
 		onDecrementBreak() {
@@ -18,7 +18,7 @@ export const BreakMenu = connect(
 
 export const SessionMenu = connect(
 	state => ({
-			sessionLength: state.sessionLength
+			sessionLength: state.pomodoroClock.sessionLength
 		}),
 	dispatch => ({
 		onDecrementSession() {
@@ -31,9 +31,9 @@ export const SessionMenu = connect(
 
 export const Display = connect(
 	state => ({
-		timeLeft: state.timeLeft,
-		timeLeftType: state.timeLeftType,
-		active: state.active
+		timeLeft: state.pomodoroClock.timeLeft,
+		timeLeftType: state.pomodoroClock.timeLeftType,
+		active: state.pomodoroClock.active
 	}),
 	null
 	)(DisplaySection)
@@ -42,7 +42,7 @@ export const Display = connect(
 let timer = null
 export const Togglers = connect(
 	state => ({
-		active: state.active
+		active: state.pomodoroClock.active
 	}),
 	dispatch => ({
 		onReset() {
@@ -63,5 +63,4 @@ export const Togglers = connect(
 		}
 	})
 )(TogglersSection)
-
 

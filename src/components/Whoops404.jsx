@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.svg'
-import {PageTemplate} from './PageTemplate'
+import PageTemplate from './PageTemplate'
 
 export default ({location}) =>
 	<PageTemplate>
