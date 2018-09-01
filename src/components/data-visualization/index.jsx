@@ -1,11 +1,11 @@
 import React from 'react'
 import logo from '../../assets/logo.svg'
-import PageTemplate from './PageTemplate'
+import SectionTemplate from './SectionTemplate'
 
 export default ({ location }) => {
   const title = location.pathname.split('-').join(' ').slice(1)
    return (
-    <PageTemplate>
+    <SectionTemplate>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -18,6 +18,6 @@ export default ({ location }) => {
           <p>Click on the project below or use the navigation</p>
         </section>
       </div>
-    </PageTemplate>
+    </SectionTemplate>
     )
 }

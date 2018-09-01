@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
-import Homepage from './components/Homepage'
+import Homepage from './components'
 import FrontEndLibrariesRoutes from './components/front-end-libraries/routes'
 import DataVisualizationRoutes from './components/data-visualization/routes'
 import ResponsiveWebDesign from './components/responsive-web-design/ResponsiveWebDesign'

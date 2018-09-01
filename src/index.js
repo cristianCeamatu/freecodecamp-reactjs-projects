@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import {Provider} from 'react-redux'
 import './index.css'
-import store from './stores/PomodoroClock/store'
-import { AppRoutes } from './routes'
+import store from './redux/store'
+import AppRoutes from './components/routes'
 
 ReactDOM.render(
 	<Provider store={store}>

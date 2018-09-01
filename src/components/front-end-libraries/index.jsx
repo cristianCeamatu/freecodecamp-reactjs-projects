@@ -1,11 +1,11 @@
 import React from 'react'
 import logo from '../../assets/logo.svg'
-import PageTemplate from './PageTemplate'
+import SectionTemplate from './SectionTemplate'
 
 export default ({location}) => {
   const title = location.pathname.split('/')[1].split('-').join(' ')
 	return (
-      <PageTemplate>
+      <SectionTemplate>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Freecodecamp <span className="capitalize">{title}</span> projects</h1>
@@ -16,6 +16,6 @@ export default ({location}) => {
           </h3>
           <p>Click on the project below or use the navigation</p>
         </section>
-      </PageTemplate>
+      </SectionTemplate>
     )
 }

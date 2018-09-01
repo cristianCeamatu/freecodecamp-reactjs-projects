@@ -1,7 +1,7 @@
 import React from 'react'
 import './bar-chart.css'
 import {FaChartBar} from 'react-icons/fa'
-import PageTemplate from '../PageTemplate'
+import SectionTemplate from '../SectionTemplate'
 import * as d3 from 'd3'
 import {getJSON} from '../../../helpers/helperFunctions'
 
@@ -26,7 +26,7 @@ export default ({location}) => {
 
 
     return (
-      <PageTemplate>
+      <SectionTemplate>
         <header className="App-header">
           <FaChartBar className="fa-3x m-2 App-logo no-animation" />
           <h1 className="App-title">This page contains the <span className="capitalize">{title}</span> project</h1>
@@ -36,6 +36,6 @@ export default ({location}) => {
             <div id="chart"><ul></ul></div>
           </section>
         </div>
-      </PageTemplate>
+      </SectionTemplate>
     )
 }

@@ -11,7 +11,7 @@ const Menu = () =>
 	</nav>
 
 export default ({children}) =>
-	<div className="front-end-libraries">
+	<div className="data-visualization">
 		<Menu />
 		{children}
 	</div>

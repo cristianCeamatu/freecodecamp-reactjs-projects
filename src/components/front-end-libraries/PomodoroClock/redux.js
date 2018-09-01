@@ -1,6 +1,69 @@
-import Types from './Constants'
+import store from '../../../redux/store' 
 
-const pomodoroClock = (state = {}, action) => {
+//Defining initial state
+export const initialState = {
+	breakLength: 5,
+	sessionLength: 25,
+	active: false,
+	timeLeft: 1500,
+	timeLeftType: 'Session'
+}
+
+// Defining constants
+const Types = {
+	BREAKINCREMENT: 'BREAKINCREMENT',
+	BREAKDECREMENT: 'BREAKDECREMENT',
+	SESSIONINCREMENT: 'SESSIONINCREMENT',
+	SESSIONDECREMENT: 'SESSIONDECREMENT',
+	STARTSTOP: 'STARTSTOP',
+	TICK: 'TICK',
+	RESET: 'RESET'
+}
+
+// Defining actions
+export const incrementBreak = () => {
+	return {
+		type: Types.BREAKINCREMENT
+	}
+}
+
+export const decrementBreak = () => {
+	return {
+		type: Types.BREAKDECREMENT
+	}
+}
+
+export const incrementSession = () => {
+	return {
+		type: Types.SESSIONINCREMENT
+	}
+}
+export const decrementSession = () => {
+	return {
+		type: Types.SESSIONDECREMENT
+	}
+}
+
+export const reset = () => {
+	return {
+		type: Types.RESET
+	}
+}
+
+export const startStop = () => {
+	return {
+		type: Types.STARTSTOP
+	}
+}
+
+export const tick = () => {
+	return {
+		type: Types.TICK
+	}
+}
+
+// Defining reducers
+export const reducer = (state = {}, action) => {
 	switch(action.type) {
 		case Types.BREAKINCREMENT:
 			return (state.breakLength !== 60 && !state.active) ? 
@@ -93,4 +156,25 @@ const pomodoroClock = (state = {}, action) => {
 	}
 }
 
-export default pomodoroClock
+
+// Middlewares
+export const focusRemover = store => next => action => {
+	// Give the document focus
+	window.focus();
+
+	// Remove focus from any focused element for the css animation to work
+	if (document.activeElement) {
+	    document.activeElement.blur();
+	}
+	next(action)
+}
+
+export const beepPlayer = state => next => action => {
+	if (store.getState().pomodoroClock.timeLeft === 0) {
+		const sound = document.getElementById('beep')
+		sound.play()
+	}
+	next(action)
+}
+
+export const middleware = [focusRemover, beepPlayer]
