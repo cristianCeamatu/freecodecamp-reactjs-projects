@@ -1031,7 +1031,7 @@ base@^0.11.1:
     component-emitter "^1.2.1"
     define-property "^1.0.0"
     isobject "^3.0.1"
-    mixin-deep "^1.2.0"
+    mixin-deep "^1.3.2"
     pascalcase "^0.1.1"
 
 batch@0.6.1:
@@ -1679,8 +1679,8 @@ cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
   resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-2.2.2.tgz#6173cebd56fac042c1f4390edf7af6c07c7cb892"
   dependencies:
     is-directory "^0.3.1"
-    js-yaml "^3.4.3"
-    minimist "^1.2.0"
+    js-yaml "^3.13.1"
+    minimist "0.2.1"
     object-assign "^4.1.0"
     os-homedir "^1.0.1"
     parse-json "^2.2.0"
@@ -2658,7 +2658,7 @@ espree@^3.5.1:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/espree/-/espree-3.5.4.tgz#b0f447187c8a8bed944b815a660bddf5deb5d1a7"
   dependencies:
-    acorn "^5.5.0"
+    acorn "^5.7.4"
     acorn-jsx "^3.0.0"
 
 esprima@^2.6.0:
@@ -6627,8 +6627,8 @@ set-value@^0.4.3:
     is-plain-object "^2.0.1"
     to-object-path "^0.3.0"
 
-set-value@^2.0.0:
-  version "2.0.0"
+set-value@^2.0.1:
+  version "2.0.1"
   resolved "https://registry.yarnpkg.com/set-value/-/set-value-2.0.0.tgz#71ae4a88f0feefbbf52d1ea604f3fb315ebb6274"
   dependencies:
     extend-shallow "^2.0.1"
