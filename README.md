@@ -1,6 +1,6 @@
-# Expense tracker created with the MERN (MongoDB-Express-React-Node) Stack
+# The purpose of this single page application is to bring together all the projects that I built while getting the Freecodecamp qualifications so the employers can visualize easier my work.
 
-> The website is not finished and its purpose is to move all the webapp I created will following the Freecodecamp modules. The web app is created with React and Redux using the `create-react-app`.
+> The website is not finished and its purpose is to move all the web app I created will following the Freecodecamp modules. The web app is created with React and Redux using the `create-react-app` and its purpose is to help my increase my knowledge of using Redux state and Router in a complex app.
 
 ![screenshot](./.github/app-screenshot.png)
 
