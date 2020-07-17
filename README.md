@@ -4,7 +4,11 @@
 
 ![screenshot](./.github/app-screenshot.png)
 
-> I decided to build this webiste so I can showcase all the projects that I created while getting the Freecodecamp diplomas for Responsive Web Design, Javascript Algorithms, Front End Libraries, and Data Visualization. I still need to add the following projects (please check them out):
+> I decided to build this webiste so I can showcase all the projects that I created while getting the Freecodecamp diplomas for Responsive Web Design, Javascript Algorithms, Front End Libraries, and Data Visualization.
+
+## Potential future features
+
+I still need to add the following projects that I developed using codepen.io (please check them out):
   - [React Redux Calculator](https://codepen.io/crisDevMM/full/ZjqKza)
   - [React Redux Markdown Previewer](https://codepen.io/crisDevMM/full/pZJQXR)
   - [Portofolio](https://codepen.io/crisDevMM/full/PaVEXW)
